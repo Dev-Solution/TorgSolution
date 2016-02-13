@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="655209137">
+    <data-source source="LOCAL" name="PostgreSQL - TorgSolution@localhost" uuid="145bb5fa-dc32-4083-8bca-f338986915d4">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/TorgSolution</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
