@@ -31,9 +31,65 @@ public class Good {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "good_type_id")
-    private GoodType goodTypeId;
+    private GoodType goodType;
 
     public Good(){
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getArticle() {
+        return article;
+    }
+
+    public void setArticle(String article) {
+        this.article = article;
+    }
+
+    public double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public GoodType getGoodType() {
+        return goodType;
+    }
+
+    public void setGoodTypeId(GoodType goodType) {
+        this.goodType = goodType;
     }
 }

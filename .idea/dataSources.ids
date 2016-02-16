@@ -1653,39 +1653,69 @@
       <column name="definition" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="good" schema="public" catalog="TorgSolution" type="TABLE">
-      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="purchase_price" sqlType="numeric" precision="12" scale="2" nullable="false" jdbcType="2"/>
-      <column name="price" sqlType="numeric" precision="12" scale="2" nullable="false" jdbcType="2"/>
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ29vZF9pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="article" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="barcode" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="price" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
+      <column name="purchase_price" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="good_type_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="barcode" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="article" sqlType="varchar" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="good_pkey" columns="id"/>
-      <foreign-key name="good_good_type_id_fkey" columns="good_type_id" ref-table="good_type" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk3080bd636cb19a" columns="good_type_id" ref-table="good_type" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="income_composition_good_id_fkey" table="income_composition" schema="public" catalog="TorgSolution" columns="good_id"/>
       <exported-key name="warehouse_good_id_fkey" table="warehouse" schema="public" catalog="TorgSolution" columns="good_id"/>
     </table>
+    <table name="good_id_seq" schema="public" catalog="TorgSolution" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
     <table name="good_type" schema="public" catalog="TorgSolution" type="TABLE">
-      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ29vZF90eXBlX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="good_type_pkey" columns="id"/>
-      <exported-key name="good_good_type_id_fkey" table="good" schema="public" catalog="TorgSolution" columns="good_type_id"/>
+      <exported-key name="fk3080bd636cb19a" table="good" schema="public" catalog="TorgSolution" columns="good_type_id"/>
+    </table>
+    <table name="good_type_id_seq" schema="public" catalog="TorgSolution" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
     </table>
     <table name="income_composition" schema="public" catalog="TorgSolution" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="income_invoice_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="good_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="income_composition_pkey" columns="id"/>
+      <foreign-key name="income_composition_good_id_fkey" columns="good_id" ref-table="good" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="income_composition_income_invoice_id_fkey" columns="income_invoice_id" ref-table="income_invoice" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="income_invoice" schema="public" catalog="TorgSolution" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="shop_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="income_invoice_pkey" columns="id"/>
+      <foreign-key name="income_invoice_shop_id_fkey" columns="shop_id" ref-table="shop" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="income_composition_income_invoice_id_fkey" table="income_composition" schema="public" catalog="TorgSolution" columns="income_invoice_id"/>
     </table>
     <table name="shop" schema="public" catalog="TorgSolution" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="shop_pkey" columns="id"/>
+      <exported-key name="income_invoice_shop_id_fkey" table="income_invoice" schema="public" catalog="TorgSolution" columns="shop_id"/>
       <exported-key name="warehouse_shop_id_fkey" table="warehouse" schema="public" catalog="TorgSolution" columns="shop_id"/>
     </table>
     <table name="warehouse" schema="public" catalog="TorgSolution" type="TABLE">

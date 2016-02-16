@@ -18,7 +18,7 @@ public class GoodType {
     @Column(name="name")
     private String name;
 
-    @OneToMany( fetch = FetchType.LAZY, mappedBy="goodTypeId")
+    @OneToMany( fetch = FetchType.LAZY, mappedBy="goodType")
     private List<Good> goods;
 
     public GoodType(){

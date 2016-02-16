@@ -31,11 +31,15 @@ CREATE TABLE warehouse(
 
 CREATE TABLE income_invoice(
  id int PRIMARY KEY,
- date timestamp
+ date timestamp,
+ shop_id int not Null,
+ FOREIGN KEY (shop_id) REFERENCES shop (id)
 );
 
 CREATE TABLE income_composition(
  id int PRIMARY KEY,
  income_invoice_id int not Null,
- FOREIGN KEY (income_invoice_id) REFERENCES income_invoice (id)
+ good_id int not Null,
+ FOREIGN KEY (income_invoice_id) REFERENCES income_invoice (id),
+ FOREIGN KEY (good_id) REFERENCES good (id)
 );

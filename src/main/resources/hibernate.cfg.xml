@@ -17,5 +17,9 @@
         <property name="show_sql">true</property>
         <mapping class="model.Good"/>
         <mapping class="model.GoodType"/>
+        <mapping class="model.Shop"/>
+        <mapping class="model.Warehouse"/>
+        <mapping class="model.IncomeInvoice"/>
+        <mapping class="model.IncomeCompositon"/>
     </session-factory>
 </hibernate-configuration>
