@@ -1,25 +1,35 @@
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-<hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/TorgSolution</property>
+<!-- Hibernate session factory -->
+<bean id="sessionFactory"
+      class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
+    <property name="dataSource">
+        <ref bean="dataSource"/>
+    </property>
 
+    <property name="hibernateProperties">
+        <props>
+            <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            <prop key="hibernate.show_sql">true</prop>
+        </props>
+    </property>
 
-        <property name="connection_pool_size">1</property>
+    <property name="annotatedClasses">
 
-        <property name="show_sql">true</property>
-        <mapping class="model.Good"/>
-        <mapping class="model.GoodType"/>
-        <mapping class="model.Shop"/>
-        <mapping class="model.Warehouse"/>
-        <mapping class="model.IncomeInvoice"/>
-        <mapping class="model.IncomeCompositon"/>
-    </session-factory>
-</hibernate-configuration>
+        <list>
+            <value>model.GoodType</value>
+            <value>model.Good</value>
+            <value>model.Shop</value>
+            <value>model.Warehouse</value>
+            <value>model.IncomeInvoice</value>
+            <value>model.IncomeCompositon</value>
+        </list>
+    </property>
+
+</bean>
+</beans>

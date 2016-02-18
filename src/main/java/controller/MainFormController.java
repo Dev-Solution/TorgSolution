@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import model.GoodType;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import service.GoodTypeManager;
 
@@ -13,18 +15,21 @@ import java.io.IOException;
 /**
  * Created by Sergey on 31.01.2016.
  */
-@Controller
+
 public class MainFormController {
 //    @FXML
 //    Button btnIncomeGoods;
-    @Autowired
-    private GoodTypeManager goodTypeManager;
-
+    ApplicationContext appContext =
+        new ClassPathXmlApplicationContext("spring-context.xml");
+//    @Autowired
+//    private GoodTypeManager goodTypeManager;
+    GoodTypeManager goodTypeManager = (GoodTypeManager)appContext.getBean("goodTypeManager");
     public void RealizationClick(ActionEvent actionEvent) throws IOException {
         System.out.println("blablabla");
         GoodType goodType = new GoodType();
         goodType.setName("SpringType");
         goodTypeManager.addGoodType(goodType);
+        System.out.println("good");
 //        try {
 //
 //            Stage stage = new Stage();
